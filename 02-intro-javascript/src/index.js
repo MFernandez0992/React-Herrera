@@ -1,24 +1,27 @@
-// Funciones - Son bloques de código que ejecutarán acciones y pueden ser reutilizables
+// Desestructuración
 
-const saludar = function (nombre){
-    return `Hola, ${nombre}`
+const persona = {
+    nombre: 'Titán',
+    edad: 7,
+    clave: 'Matías'
 }
 
-const saludar2 = (nombre) => {
-    return `Hola, ${nombre}`;
+const {nombre, edad, clave} = persona;
+
+console.log(persona);
+console.log(persona.nombre);
+console.log(nombre);
+
+const retornaPersona = ({ nombre, clave, edad, rango = 'Perro'}) => {
+    console.log(nombre, edad, rango);
+
+    return{
+        nombreClave: clave,
+        anios: edad
+    }
 }
 
-const saludar3 = (nombre) => `Hola, ${nombre}`;
-const saludar4 = () => `Hola Mundo`;
+retornaPersona(persona);
 
-console.log(saludar('Matías Fernández'));
-console.log(saludar2('Matías Fernández'));
-console.log(saludar3('Matías Fernández'));
-console.log(saludar4('Matías Fernández'));
-
-const getUser = () => ({
-    uid: 'ABC123',
-    username: 'MatuBolso'
-});
-
-console.log(getUser());
+const { nombreClave, anios} = useContext(persona);
+console.log(nombreClave, anios);
