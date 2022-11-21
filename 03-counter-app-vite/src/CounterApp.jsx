@@ -1,42 +1,46 @@
 import { useState } from 'react';
-
 import PropTypes from 'prop-types';
+import { number } from 'prop-types';
 
-export const CounterApp = ({value}) => {
+export const CounterApp = ({ value }) =>{
 
-    // Los Hooks deben declararse con constantes para no reasignarlos accidentalmente
-    // Le asigno como useState(estado inicial) en 0
-    const [ counter, setCounter ] = useState( 0 );
+    /* Hooks - Estos permiten usar el estado y otras características de React sin escribir una clase, no son más que funciones.
+    
+    En este caso creo una constante desestructurando counter(valor inicial) y setCounter(es quien va a modificar el counter), y le asigno al useState(estado) el valor inicial de value(0) en el main.jsx
+    
+    */
+    const [ counter, setCounter ] = useState( value );
+    
+    const sumarBoton = (e) => {
+        //console.log(e);
 
-    // Cuando mando a llamar a setCounter le digo a React que el estado de la aplicación cambió por lo que debe volver a realizar la renderización con el nuevo estado del componente 
-    const sumarClick = (e) => setCounter( counter + 1 );
+        /* Cuando llamo la función setCounter esta tomará el valor del counter y le sumará uno */
+        setCounter( counter + 1);
+    }
 
-    const restarClick = (e) => setCounter(counter -1);
+    const restarBoton = (e) => setCounter( counter - 1);
+    const resetBoton = (e) => setCounter( value );
 
-    const resetClick = (e) => setCounter(value);
-
-    return(
+    return (
         <>
             <h1>CounterApp</h1>
             <h2>{ counter }</h2>
-
-            <button onClick={ sumarClick }>
+            <button onClick={ sumarBoton }>
                 +1
             </button>
 
-            <button onClick={ restarClick }>
+            <button onClick={ restarBoton }>
                 -1
             </button>
 
-            <button onClick={ resetClick }>
+            <button onClick={ resetBoton }>
                 Reset
             </button>
         </>
-    );    
+    );
 }
 
+/* Hago una verificación para que el value sea solamente número y obligatorio
 CounterApp.propTypes = {
-    value: PropTypes.number
-}
-
-/* Hooks -  */
+    value: number.isRequired
+} */

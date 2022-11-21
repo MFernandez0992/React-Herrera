@@ -1,5 +1,1 @@
-export const HelloWorldApp = () => {
-    return(
-        <h1>Hello World App!</h1>
-    );
-}
+export const saludo = <h1>Hola mundo!!!</h1>;
