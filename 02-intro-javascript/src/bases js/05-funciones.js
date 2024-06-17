@@ -33,11 +33,10 @@ console.log(user);
     }
 }; */
 
-const getUserActivo = nombre => {
-    return{
+const getUserActivo = nombre =>({
         uid: 'ABC789',
         username: nombre
-    }
-}
+})
+
 const usuarioActivo = getUserActivo('Titán');
 console.log(usuarioActivo);
